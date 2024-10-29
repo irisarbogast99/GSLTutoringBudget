@@ -1,9 +1,9 @@
 import streamlit as st
 
 # Function to calculate total cost of tutoring
-def calculate_total_cost(num_students, num_weeks, num_classes, hourly_wage):
-    # Total number of hours for all students (1 hour per week per class)
-    total_hours = num_students * num_weeks * num_classes  # Removed the 5 hours per week assumption
+def calculate_total_cost(num_students, num_weeks, num_classes, hours_per_week, hourly_wage):
+    # Total number of hours for all students
+    total_hours = num_students * num_weeks * num_classes * hours_per_week
     # Total cost for all the tutoring hours
     total_cost = total_hours * hourly_wage
     return total_cost
@@ -21,6 +21,9 @@ num_weeks = st.slider("", min_value=1, max_value=30, value=8, step=1)
 st.markdown("<h3 style='font-size: 24px;'>Number of classes receiving tutoring (1 - 3)</h3>", unsafe_allow_html=True)
 num_classes = st.slider("", min_value=1, max_value=3, value=1, step=1)
 
+st.markdown("<h3 style='font-size: 24px;'>Hours of tutoring per week per class</h3>", unsafe_allow_html=True)
+hours_per_week = st.slider("", min_value=1, max_value=10, value=5, step=1)
+
 st.markdown("<h3 style='font-size: 24px;'>Hourly wage of tutors ($)</h3>", unsafe_allow_html=True)
 hourly_wage = st.slider("", min_value=10, max_value=100, value=25, step=1)
 
@@ -29,7 +32,7 @@ st.markdown("<h3 style='font-size: 24px;'>Enter your total available budget ($)<
 budget = st.number_input("", min_value=0, value=10000)
 
 # Calculate total cost
-total_cost = calculate_total_cost(num_students, num_weeks, num_classes, hourly_wage)
+total_cost = calculate_total_cost(num_students, num_weeks, num_classes, hours_per_week, hourly_wage)
 
 # Display the total cost with larger text
 st.markdown(f"<h3 style='font-size: 24px;'>Total cost for the tutoring program: <strong>${total_cost:.2f}</strong></h3>", unsafe_allow_html=True)
