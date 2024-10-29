@@ -11,21 +11,21 @@ def calculate_total_cost(num_students, num_weeks, num_classes, hours_per_week, h
 # Streamlit UI with larger text size using Markdown and HTML
 st.markdown("<h1 style='text-align: center; font-size: 48px;'>Tutoring Program Budget Calculator</h1>", unsafe_allow_html=True)
 
-# Sliders for user input with labels in larger text
+# Adjusted sliders with unique 'key' arguments
 st.markdown("<h3 style='font-size: 24px;'>Number of students receiving tutoring</h3>", unsafe_allow_html=True)
-num_students = st.slider("", min_value=1, max_value=10, value=5, step=1)
+num_students = st.slider("", min_value=1, max_value=10, value=5, step=1, key="num_students")
 
 st.markdown("<h3 style='font-size: 24px;'>Number of weeks of tutoring</h3>", unsafe_allow_html=True)
-num_weeks = st.slider("", min_value=1, max_value=30, value=8, step=1)
+num_weeks = st.slider("", min_value=1, max_value=30, value=8, step=1, key="num_weeks")
 
 st.markdown("<h3 style='font-size: 24px;'>Number of classes receiving tutoring (1 - 3)</h3>", unsafe_allow_html=True)
-num_classes = st.slider("", min_value=1, max_value=3, value=1, step=1)
+num_classes = st.slider("", min_value=1, max_value=3, value=1, step=1, key="num_classes")
 
 st.markdown("<h3 style='font-size: 24px;'>Hours of tutoring per week per class</h3>", unsafe_allow_html=True)
-hours_per_week = st.slider("", min_value=1, max_value=10, value=5, step=1)
+hours_per_week = st.slider("", min_value=1, max_value=10, value=5, step=1, key="hours_per_week")
 
 st.markdown("<h3 style='font-size: 24px;'>Hourly wage of tutors ($)</h3>", unsafe_allow_html=True)
-hourly_wage = st.slider("", min_value=10, max_value=100, value=25, step=1)
+hourly_wage = st.slider("", min_value=10, max_value=100, value=25, step=1, key="hourly_wage")
 
 # Input for total budget
 st.markdown("<h3 style='font-size: 24px;'>Enter your total available budget ($)</h3>", unsafe_allow_html=True)
